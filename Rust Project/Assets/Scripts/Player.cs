@@ -8,16 +8,18 @@ public class Player : NetworkBehaviour                    // тут перемещение пер
 {                                                          // Миррор плохо дружит с чарастером , но хорошо с риджитбоди
 
     [SerializeField] private float _speedWalk;
-    [SerializeField] private float _jumpPower;
+    [SerializeField] private float _jumpPower, _maxJumpPower;
 
     private GameObject _camera;                             //тут перемещение камены "за игроком" , сначала игрок, а камера под него подстраивается
     private Rigidbody _rb;
     private Vector3 _walkDirection;
     private bool _isGrounded;
+    private float _nowJumpPower;
 
 
     private void Start()
     {
+        _nowJumpPower = _jumpPower;
         _camera = GameObject.Find("Camera");
         _rb = GetComponent<Rigidbody>();
     }
@@ -50,7 +52,7 @@ public class Player : NetworkBehaviour                    // тут перемещение пер
     {
         if (canJump)
         {
-            _rb.AddForce(Vector3.up * _jumpPower);
+            _rb.AddForce(Vector3.up * _nowJumpPower);
             _isGrounded = false;
         }
     }
@@ -73,13 +75,19 @@ public class Player : NetworkBehaviour                    // тут перемещение пер
         {
             _isGrounded = true;
         }
+        if(collision.gameObject.tag == "Trampoline")
+        {
+            _nowJumpPower = _maxJumpPower;
+            _isGrounded = true;
+        }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Trampoline")
         {
             _isGrounded = false;
+            _nowJumpPower = _jumpPower;
         }
     }
 
