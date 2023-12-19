@@ -32,7 +32,7 @@ public class ShootController : NetworkBehaviour
     private void SpawnBullet()
     {
         GameObject bullet = Instantiate(_bulletPrefab, transform.position, transform.rotation);
-        bullet.transform.Translate(_transformToPlayerX, 0, 0);      // чтобы пул€ сбоку от игрока была                        
+        bullet.transform.Translate(0, 0, _transformToPlayerX);      // чтобы пул€ сбоку от игрока была                        
         NetworkServer.Spawn(bullet);                                 // короче спавн пули на сервере (команда)
     }
 

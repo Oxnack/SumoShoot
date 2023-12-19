@@ -22,6 +22,7 @@ public class Player : NetworkBehaviour                    // тут перемещение пер
         _nowJumpPower = _jumpPower;
         _camera = GameObject.Find("Camera");
         _rb = GetComponent<Rigidbody>();
+        Debug.Log(_maxJumpPower);
     }
 
 
@@ -75,24 +76,20 @@ public class Player : NetworkBehaviour                    // тут перемещение пер
         {
             _isGrounded = true;
         }
-        if(collision.gameObject.tag == "Trampoline")
+        else if(collision.gameObject.tag == "Trampoline")
         {
-            _nowJumpPower = _maxJumpPower;
+            _rb.AddForce(Vector3.up * _maxJumpPower);
             _isGrounded = true;
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Trampoline")
+        if (collision.gameObject.tag == "Ground")
         {
             _isGrounded = false;
             _nowJumpPower = _jumpPower;
         }
     }
-
-
-
-
 
 }
