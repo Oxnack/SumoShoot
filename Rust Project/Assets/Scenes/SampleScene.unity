@@ -963,7 +963,7 @@ MonoBehaviour:
   onlineScene: 
   transport: {fileID: 140181767}
   networkAddress: localhost
-  maxConnections: 100
+  maxConnections: 3
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
