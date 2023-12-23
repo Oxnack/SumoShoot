@@ -8,6 +8,7 @@ using TMPro;
 public class Portal : NetworkBehaviour
 {
     [SerializeField] private TextMeshPro _delayText;
+    [SerializeField] private TextMeshPro _delayText2;
     [SerializeField] private GameObject _portal2;
     [SerializeField] private int _delayed;
 
@@ -29,14 +30,15 @@ public class Portal : NetworkBehaviour
     {
         while(delay > 0)
         {
-            _delayText.enabled  = true;
 
             yield return new WaitForSeconds(1f);
             delay -= 1;
             _delayText.text = "Подождите: \n" + delay + " секунд.";
+            _delayText2.text = "Подождите: \n" + delay + " секунд.";
         }
                                                    
-        _delayText.enabled = false;
+        _delayText.text = "";
+        _delayText2.text = "";
 
         gameObject.GetComponent<BoxCollider>().enabled = true;
         _portal2.GetComponent<BoxCollider>().enabled = true;
