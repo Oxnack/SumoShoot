@@ -20,7 +20,7 @@ public class ShootController : NetworkBehaviour
         if (Input.GetMouseButtonDown(0) && _ok)
         {
             Debug.Log("Shoot!");
-            SpawnBullet();
+            CmdSpawnBullet();
 
             _ok = false;
 
@@ -29,7 +29,7 @@ public class ShootController : NetworkBehaviour
     }
 
     [Command]
-    private void SpawnBullet()
+    private void CmdSpawnBullet()
     {
         GameObject bullet = Instantiate(_bulletPrefab, transform.position, transform.rotation);
         bullet.transform.Translate(0, 0, _transformToPlayerX);      // чтобы пуля сбоку от игрока была                        
