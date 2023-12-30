@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Mirror;
 
-public class BattleButton : MonoBehaviour
+public class BattleButton : NetworkBehaviour
 {
-    public void ToBattle()
-    { 
 
-        SceneManager.LoadScene("SampleScene");
+    public void ConnectToServer()
+    {
+        NetworkManager.singleton.StartClient();
 
     }
 }

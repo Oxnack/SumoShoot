@@ -79,7 +79,6 @@ public class Player : NetworkBehaviour                    // тут перемещение пер
         else if(collision.gameObject.tag == "Trampoline")
         {
             _rb.AddForce(Vector3.up * _maxJumpPower);
-            _isGrounded = true;
         }
     }
 
