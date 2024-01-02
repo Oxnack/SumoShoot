@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using UnityEngine.UI;
+using TMPro;
 
 public class Player : NetworkBehaviour                    // тут перемещение персонажа по риджитбоди, а не по чарестер контроллер ( нужно дл€ сумо оброботки на сервере)
 {                                                          // ћиррор плохо дружит с чарастером , но хорошо с риджитбоди
@@ -10,32 +11,47 @@ public class Player : NetworkBehaviour                    // тут перемещение пер
     [SerializeField] private float _speedWalk;
     [SerializeField] private float _jumpPower, _maxJumpPower;
 
+    [SerializeField] private TextMeshPro _namePlayer;
+
     private GameObject _camera;                             //тут перемещение камены "за игроком" , сначала игрок, а камера под него подстраиваетс€
     private Rigidbody _rb;
     private Vector3 _walkDirection;
     private bool _isGrounded;
     private float _nowJumpPower;
 
+    [SyncVar]
+    public string playerName = "";
+
 
     private void Start()
     {
-        _nowJumpPower = _jumpPower;
-        _camera = GameObject.Find("Camera");
-        _rb = GetComponent<Rigidbody>();
-        Debug.Log(_maxJumpPower);
+        if (isLocalPlayer)
+        {
+            _nowJumpPower = _jumpPower;
+            _camera = GameObject.Find("Camera");
+            _rb = GetComponent<Rigidbody>();
+            playerName = PlayerPrefs.GetString("PlayerName");
+        }
     }
 
 
     private void Update()
     {
-        if (!isLocalPlayer) return;
+        if (isOwned)
+        {
+            _namePlayer.text = playerName;
+        }
+        
+        if (isLocalPlayer) 
+        {
+            float x = Input.GetAxis("Horizontal");             // кнопки влево вправо на клаве и  WASD тоже
+            float z = Input.GetAxis("Vertical");
 
-        float x = Input.GetAxis("Horizontal");             // кнопки влево вправо на клаве и  WASD тоже
-        float z = Input.GetAxis("Vertical");
 
+            Jump(Input.GetKey(KeyCode.Space) && _isGrounded);
+            _walkDirection = transform.right * x + transform.forward * z;
+        }
 
-        Jump(Input.GetKey(KeyCode.Space) && _isGrounded);
-        _walkDirection = transform.right * x + transform.forward * z;
         
     }
 
