@@ -413,14 +413,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53039d1e4599dd149b426fd6184f4b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 1
+  syncDirection: 0
   syncMode: 0
-  syncInterval: 0
+  syncInterval: 2
   _speedWalk: 4.87
   _jumpPower: 433.29
   _maxJumpPower: 948.96
-  _namePlayer: {fileID: 5645427329195854970}
-  playerName: 
+  _namePlayerUI: {fileID: 5645427329195854970}
 --- !u!65 &8719473122178033787
 BoxCollider:
   m_ObjectHideFlags: 0

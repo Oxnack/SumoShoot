@@ -11,48 +11,51 @@ public class Player : NetworkBehaviour                    // тут перемещение пер
     [SerializeField] private float _speedWalk;
     [SerializeField] private float _jumpPower, _maxJumpPower;
 
-    [SerializeField] private TextMeshPro _namePlayer;
+    [SerializeField] private TextMeshPro _namePlayerUI;
 
     private GameObject _camera;                             //тут перемещение камены "за игроком" , сначала игрок, а камера под него подстраивается
     private Rigidbody _rb;
     private Vector3 _walkDirection;
     private bool _isGrounded;
     private float _nowJumpPower;
+    private string _offlineName;
+    
+    [SyncVar] private string _onlineName;
 
-    [SyncVar]
-    public string playerName = "";
 
 
     private void Start()
     {
-        if (isLocalPlayer)
+        _nowJumpPower = _jumpPower;
+        _camera = GameObject.Find("Camera");
+        _rb = GetComponent<Rigidbody>();
+        
+        if(isLocalPlayer)
         {
-            _nowJumpPower = _jumpPower;
-            _camera = GameObject.Find("Camera");
-            _rb = GetComponent<Rigidbody>();
-            playerName = PlayerPrefs.GetString("PlayerName");
+            _offlineName = PlayerPrefs.GetString("PlayerName");
+            CmdNameToServer(_offlineName);
         }
+    }
+
+    [Command]
+    public void CmdNameToServer(string name)
+    {
+        _onlineName = name;
     }
 
 
     private void Update()
     {
-        if (isOwned)
-        {
-            _namePlayer.text = playerName;
-        }
-        
-        if (isLocalPlayer) 
-        {
-            float x = Input.GetAxis("Horizontal");             // кнопки влево вправо на клаве и  WASD тоже
-            float z = Input.GetAxis("Vertical");
+        _namePlayerUI.text = _onlineName;
+
+        if (!isLocalPlayer) return;
+
+        float x = Input.GetAxis("Horizontal");             // кнопки влево вправо на клаве и  WASD тоже
+        float z = Input.GetAxis("Vertical");
 
 
-            Jump(Input.GetKey(KeyCode.Space) && _isGrounded);
-            _walkDirection = transform.right * x + transform.forward * z;
-        }
-
-        
+        Jump(Input.GetKey(KeyCode.Space) && _isGrounded);
+        _walkDirection = transform.right * x + transform.forward * z;
     }
 
     private void FixedUpdate()
