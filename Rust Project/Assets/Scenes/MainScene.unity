@@ -220,7 +220,7 @@ MonoBehaviour:
   offlineScene: Assets/Scenes/MainScene.unity
   onlineScene: Assets/Scenes/SampleScene.unity
   transport: {fileID: 30328787}
-  networkAddress: localhost
+  networkAddress: 89.111.172.205
   maxConnections: 100
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
@@ -279,7 +279,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 260.69714, y: -153}
+  m_AnchoredPosition: {x: 260.69714, y: -91}
   m_SizeDelta: {x: 94.60571, y: 77.315094}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &177198641
@@ -398,10 +398,10 @@ RectTransform:
   - {fileID: 1678906078}
   m_Father: {fileID: 1197521908}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 193.9082, y: -87}
-  m_SizeDelta: {x: 245.8164, y: 75.303}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 193.9082, y: 132}
+  m_SizeDelta: {x: 245.8164, y: 75.30301}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &274239200
 MonoBehaviour:
@@ -517,9 +517,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1197521908}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 401, y: 288}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -108, y: -37}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &526105344
@@ -1223,7 +1223,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 118, y: -153}
+  m_AnchoredPosition: {x: 118, y: -91}
   m_SizeDelta: {x: 94.60571, y: 77.315094}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1046848498
@@ -1477,12 +1477,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2588,10 +2588,10 @@ RectTransform:
   - {fileID: 1949092486}
   m_Father: {fileID: 1197521908}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 390.8933, y: -3.0131}
-  m_SizeDelta: {x: 193.7866, y: 36.0257}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -149.10693, y: -3.0131}
+  m_SizeDelta: {x: 193.78662, y: 36.0257}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1945016486
 MonoBehaviour:

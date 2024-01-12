@@ -32,8 +32,4 @@ public class MainMenuEvents : MonoBehaviour
         PlayerPrefs.SetString("PlayerName", _inputField.text); 
     }
 
-    public void ConnectToServer()
-    {
-        NetworkRoomManager.singleton.StartClient();
-    }
 }
