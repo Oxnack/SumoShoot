@@ -32,4 +32,9 @@ public class MainMenuEvents : MonoBehaviour
         PlayerPrefs.SetString("PlayerName", _inputField.text); 
     }
 
+    public void ConToServer()
+    {
+        NetworkManager.singleton.StartClient();
+    }
+
 }
